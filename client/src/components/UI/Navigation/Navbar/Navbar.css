@@ -1,0 +1,160 @@
+.navbar-collapse {
+  justify-content: space-around !important;
+}
+
+.navbar {
+  background: #171717d8 0% 0% no-repeat padding-box !important;
+  box-shadow: 0px 3px 11px #bad8fd40 !important;
+  margin-bottom: -40px !important;
+}
+
+.Navbar nav {
+  height: 100%;
+}
+
+.nav-item a:hover {
+  color: #fbfdff !important;
+  background-color: #171717d8;
+}
+
+.nav-item a {
+  color: #fbfdff;
+  letter-spacing: 0.47px;
+}
+
+.Logo-specs {
+  margin-left: 150px;
+}
+
+.teachLink {
+  font: normal normal 200 17px/23px;
+  letter-spacing: 0.47px;
+  color: #fbfdff;
+  border-radius: 8px;
+  background: rgba(128, 128, 128, 0.192);
+  margin-right: 13px;
+}
+
+.teacherActive {
+  background: white;
+  border: 1px solid #566775;
+  color: #171717d8 !important;
+}
+
+.Signupbtn,
+.Loginbtn,
+.logoutlink {
+  font: normal normal 400 17px/20px;
+  letter-spacing: 0.47px;
+  color: #ffffff;
+  background: rgba(128, 128, 128, 0.192) 0% 0% no-repeat padding-box;
+  border-radius: 8px;
+  opacity: 1;
+  margin-left: 10px;
+}
+
+#bookmarkNav {
+  color: #fbfdff !important;
+  font-weight: normal;
+  font: normal normal 200 17px/23px;
+  letter-spacing: 0.47px;
+}
+
+.active-categoryMenu {
+  color: #171717d8 !important;
+  font-weight: bolder !important;
+}
+
+.Loginbtn:hover,
+.Signupbtn:hover {
+  opacity: 0.7;
+}
+
+.profileName {
+  font: normal normal 200 17px/23px;
+  color: rgba(13, 22, 46, 0.76) !important;
+}
+
+.btnactive {
+  background: #fcfcfc 0% 0% no-repeat padding-box;
+  border: 0.5px solid #2674e2;
+  border-radius: 8px;
+  font: normal normal 400 17px/20px;
+  letter-spacing: 0.47px;
+  color: #000000 !important;
+  margin-left: 10px;
+}
+
+.dropdown-toggle {
+  color: #566775;
+}
+
+.dropdown-item {
+  font: normal normal 18px/20px;
+  letter-spacing: 0.47px;
+  color: #566775 !important;
+  opacity: 0.7;
+}
+
+.dropdown-item:active {
+  background: #171717d8 !important;
+}
+
+.dropdown-item:hover {
+  font-weight: bolder !important;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+
+.wishlistlink,
+.profilelink {
+  color: #566775;
+}
+
+.linkactive {
+  font-weight: bolder !important;
+}
+
+.navlink:hover {
+  color: #566775 !important;
+}
+
+.wishlistlink:hover,
+.profilelink:hover {
+  font-weight: bolder !important;
+}
+
+.fa-bars {
+  color: #f8f9fa;
+}
+
+.usere {
+  margin-right: 20px;
+}
+
+@media (max-width: 998px) {
+  .Signupbtn,
+  .Loginbtn,
+  .logoutlink {
+    font: normal normal 400 17px/20px;
+    letter-spacing: 0.47px;
+    color: grey;
+    background: none;
+    border-radius: 8px;
+    opacity: 1;
+    margin-left: 0px;
+    border: none;
+  }
+
+  .btnactive {
+    background: none;
+    border-radius: 8px;
+    font: normal normal 400 17px/20px;
+    letter-spacing: 0.47px;
+    color: #171717d8 !important;
+    margin-left: 0px;
+    border: none;
+  }
+}

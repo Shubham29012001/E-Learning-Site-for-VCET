@@ -1,0 +1,16 @@
+# Ignore node_modules folder
+node_modules
+client/node_modules
+.env
+Files
+certificate.pdf
+/.env
+dump.rdb
+
+#Dependency npm install --save-dev babel-plugin-react-html-attrs
+firebase.json
+yarn.lock
+.firebase
+.firebaserc
+
+Project Details.docx
