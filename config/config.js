@@ -16,3 +16,8 @@ exports.googleAuth = process.env.OAuth2Client;
 
 // Youtube API Key
 exports.youtubeAPI = process.env.GOOGLE_API_KEY;
+
+// Redis Configuration
+exports.redisHost = process.env.REDIS_HOST;
+exports.redisPort = process.env.REDIS_PORT;
+exports.redisPassword = process.env.REDIS_PASSWORD;
