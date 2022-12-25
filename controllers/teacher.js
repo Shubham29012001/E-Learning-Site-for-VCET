@@ -1,11 +1,11 @@
 const Course = require("../model/courses");
-const mongoose = require("mongoose");
 const PlaylistSummary = require("youtube-playlist-summary");
 const exec = require("child_process").exec;
 const api_key = require("../config/config");
+const cloudinaryClient = require("../utils/cloudinaryConfig");
 
 exports.uploadCourse = (req, res, next) => {
-  const imageurl = req.files.image[0].path;
+  let imageurl = req.files.image[0].path;
   const zipurl = req.files.zip[0].path;
   const userId = req.body._id;
   const url = req.body.url;
@@ -19,72 +19,87 @@ exports.uploadCourse = (req, res, next) => {
     requirement,
   } = req.body;
 
-  const course = new Course({
-    title: title,
-    category: category,
-    imageurl: imageurl,
-    zipurl: zipurl,
-    name: name,
-    willLearn: willLearn,
-    discription: discription,
-    discriptionLong: discriptionLong,
-    requirement: requirement,
-    rating: 0,
-    creator: userId,
-    YoutubeVideo: url,
-    Duration: title,
-  });
+  // Upload Image to Cloudinary Account for Image Hosting & Optimization
 
-  let videoContent = [];
+  cloudinaryClient.uploader.upload(imageurl, {
+    use_filename: true,
+    unique_filename: true,
+    overwrite: false,
+    alt: title,
+    folder: 'e-Learning'
+  }, (err, response) => {
 
-  const config = {
-    GOOGLE_API_KEY: api_key.youtubeAPI, // require
-    PLAYLIST_ITEM_KEY: [
-      "publishedAt",
-      "title",
-      "description",
-      "videoId",
-      "videoUrl",
-    ], // option
-  };
-  let items = [];
-  const ps = new PlaylistSummary(config);
-  const PLAY_LIST_ID = url;
+    if (err) return console.log(err);
 
-  ps.getPlaylistItems(PLAY_LIST_ID)
-    .then((video) => {
-      items = video.items;
-      items.forEach((video) => {
-        let videoContentContainer = {
-          videotitle: null,
-          videoUrl: null,
-          usersWatched: [],
-        };
+    imageurl = response.secure_url;
 
-        videoContentContainer.videoUrl = video.videoUrl;
-        videoContentContainer.videotitle = video.title;
-        videoContent.push(videoContentContainer);
-      });
-      course.videoContent = videoContent;
-    })
-    .catch((err) => {
-      console.log(err);
+    const course = new Course({
+      title: title,
+      category: category,
+      imageurl: imageurl,
+      zipurl: zipurl,
+      name: name,
+      willLearn: willLearn,
+      discription: discription,
+      discriptionLong: discriptionLong,
+      requirement: requirement,
+      rating: 0,
+      creator: userId,
+      YoutubeVideo: url,
+      Duration: title,
     });
 
-  var child;
-  let VideoDuration = "videoduration";
-  var Y = "Duration: ";
-  var string = "";
-  let command = "ypd " + url;
-  child = exec(command, (error, stdout, stderr) => {
-    VideoDuration = stdout.slice(stdout.indexOf(Y) + Y.length);
-    string = VideoDuration.replace(/^\s+|\s+$/g, "");
-    console.log("Duration is " + string);
-    course.Duration = string;
-    course.save().then((result) => {
-      res
-        .status(201)
-        .json({ message: "Course created successfully", newCourse: result });
+    let videoContent = [];
+
+    const config = {
+      GOOGLE_API_KEY: api_key.youtubeAPI, // require
+      PLAYLIST_ITEM_KEY: [
+        "publishedAt",
+        "title",
+        "description",
+        "videoId",
+        "videoUrl",
+      ], // option
+    };
+    let items = [];
+    const ps = new PlaylistSummary(config);
+    const PLAY_LIST_ID = url;
+
+    ps.getPlaylistItems(PLAY_LIST_ID)
+      .then((video) => {
+        items = video.items;
+        items.forEach((video) => {
+          let videoContentContainer = {
+            videotitle: null,
+            videoUrl: null,
+            usersWatched: [],
+          };
+
+          videoContentContainer.videoUrl = video.videoUrl;
+          videoContentContainer.videotitle = video.title;
+          videoContent.push(videoContentContainer);
+        });
+        course.videoContent = videoContent;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    var child;
+    let VideoDuration = "videoduration";
+    var Y = "Duration: ";
+    var string = "";
+    let command = "ypd " + url;
+    child = exec(command, (error, stdout, stderr) => {
+      VideoDuration = stdout.slice(stdout.indexOf(Y) + Y.length);
+      string = VideoDuration.replace(/^\s+|\s+$/g, "");
+      console.log("Duration is " + string);
+      course.Duration = string;
+      course.save().then((result) => {
+        res
+          .status(201)
+          .json({ message: "Course created successfully", newCourse: result });
+      });
     });
   });
 };

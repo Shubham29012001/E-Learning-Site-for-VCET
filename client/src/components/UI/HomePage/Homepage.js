@@ -9,7 +9,6 @@ import { Redirect, NavLink } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import Layout from "../../Layout/Layout";
 import "./CSS/Homepage.css";
-import Url from "../../../ApiServices/BackendUrl";
 
 class Homepage extends Component {
   IsMounted = false;
@@ -93,7 +92,7 @@ class Homepage extends Component {
               key={item._id}
               title={item.title}
               teacher={item.name}
-              img={Url + item.imageurl}
+              img={item.imageurl}
               rating={parseInt(rating)}
               ratingtimesUpdated={item.rating.timesUpdated}
             />

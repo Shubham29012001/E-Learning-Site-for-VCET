@@ -21,3 +21,8 @@ exports.youtubeAPI = process.env.GOOGLE_API_KEY;
 exports.redisHost = process.env.REDIS_HOST;
 exports.redisPort = process.env.REDIS_PORT;
 exports.redisPassword = process.env.REDIS_PASSWORD;
+
+// Cloudinary Configuration
+exports.cloudinaryCloudName = process.env.CLOUDINARY_CLOUD_NAME;
+exports.cloudinaryKey = process.env.CLOUDINARY_KEY;
+exports.cloudinarySecretKey = process.env.CLOUDINARY_SECRET_KEY;
