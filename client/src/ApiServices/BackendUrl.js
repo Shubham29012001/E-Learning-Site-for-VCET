@@ -1,2 +1,2 @@
-const Url = "https://vcet-final-year-project.herokuapp.com/";
+const Url = "https://e-learning-site-for-vcet.onrender.com/";
 export default Url;

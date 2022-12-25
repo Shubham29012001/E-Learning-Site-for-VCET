@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://vcet-final-year-project.herokuapp.com/",
+  baseURL: "https://e-learning-site-for-vcet.onrender.com/",
 });
 
 export default instance;

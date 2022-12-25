@@ -10,7 +10,7 @@ class CourseDesc extends Component {
     bookmarked: this.props.bookmark,
     CourseId: this.props.CourseId,
     count: 0,
-    URL: "https://vcet-final-year-project.herokuapp.com/",
+    URL: "https://e-learning-site-for-vcet.onrender.com/",
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
