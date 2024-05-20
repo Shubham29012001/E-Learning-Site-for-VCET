@@ -23,7 +23,7 @@
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",
 		"express": "^4.19.2",
-		"express-validator": "^6.10.0",
+		"express-validator": "^7.1.0",
 		"fs": "^0.0.1-security",
 		"google-auth-library": "^7.0.4",
 		"jsonwebtoken": "^8.5.1",
